@@ -1,0 +1,8 @@
+C:\Users\Evelyn\Desktop\class-csharp\HW\bin\Debug\netcoreapp1.1\HW.deps.json
+C:\Users\Evelyn\Desktop\class-csharp\HW\bin\Debug\netcoreapp1.1\HW.runtimeconfig.json
+C:\Users\Evelyn\Desktop\class-csharp\HW\bin\Debug\netcoreapp1.1\HW.runtimeconfig.dev.json
+C:\Users\Evelyn\Desktop\class-csharp\HW\obj\Debug\netcoreapp1.1\HW.AssemblyInfo.cs
+C:\Users\Evelyn\Desktop\class-csharp\HW\bin\Debug\netcoreapp1.1\HW.dll
+C:\Users\Evelyn\Desktop\class-csharp\HW\bin\Debug\netcoreapp1.1\HW.pdb
+C:\Users\Evelyn\Desktop\class-csharp\HW\obj\Debug\netcoreapp1.1\HW.dll
+C:\Users\Evelyn\Desktop\class-csharp\HW\obj\Debug\netcoreapp1.1\HW.pdb
