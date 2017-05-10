@@ -8,14 +8,14 @@ namespace HW
         static void Main(string[] args)
         {
             // Calculate the area of a rectangle. 
-
-            double area = TriangleCal(6,9);
+            double area;
+            area = TriangleCal(6,9);
             Console.WriteLine("The area of the Triangle with sides lenght 6 and 9 is {0}", area);
             Console.WriteLine("Please provide a height for a Triange.");
             double height= Convert.ToDouble (Console.ReadLine());
             Console.WriteLine("Please provide a width for a Triange.");
             double width= Convert.ToDouble (Console.ReadLine());
-            double area = TriangleCal(height,width);
+            area = TriangleCal(height,width);
             Console.WriteLine("The area of the Triangle is {0}", area);
 
 
