@@ -1,56 +1,84 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace HW2BigBankInc
 {
     class Bank
     {
-            // public string CurrentAccount{ get; set;}  
-            // public bool NewAccount{ get; set;}
-            // // figure out how to create a list and add for new accounts
-            // // new account function maybe abstract inorder to override to savings or checking
+            public static int count=0;
 
-            // public string NewAccount{ get; set;} 
-            // public string RemoveAccount{ get; set;} // might state if more more that such amount
-            //  //a check will be mailed to customerfor such amount but max that
-            // //  will be withraw at this time is $10k.
-
-            // public string Saving(); // Make sure interest amount is shown. Amount withdraw, and new balance.
-            // public string Checking(); 
-
-            // protected string Name {get; set;}
+            public static int accountSavings=90123400;
+            public static int accountChecking=20137800;
+            public static string clientName {get; set;}
             
             protected double balance{ get; set;}
             protected double sabalance{ get; set;}
             protected double chbalance{ get; set;}
-
-            // protected double savingWithdrawal{ get; set;}
-            // protected double checkingWithdrawl{ get; set;}
-            
+       
     }
 
-    // class Customer: Bank
-    // {
-    //     public Customer(string owner)
-    //     {
-    //         this.Name = owner;
-    //     }
-    //     public string sayCustomer()
-    //     {
-    //         return  this.Name;
-    //     }
-    //     public void greetClient()
-    //     {
-    //         Console.WriteLine("Welcome {0}", this.Name);
-    //     }
+    class Customer:Deposit  // Bank
+    {
+        public static int totalAccounts=0; // provides the total accounts owned by that individual
+        int myCheckingAcct;
+        int mySavingsAcct;
+        
+        public Customer(string accountOwner)
+        {
+            clientName = accountOwner;
+        }
+        public string sayCustomer()
+        {
+            return  clientName;
+        }
+        public void greetClient()
+        {
+            Console.WriteLine("Welcome {0}", clientName);
+        }
+        public void newChecking()
+        {
+            Bank.count++; // increments the grand total of all accounts in bank
+            totalAccounts++; //total accounts for this customer
+            Bank.accountChecking = Bank.accountChecking++;
+            myCheckingAcct = Bank.accountChecking;
+            Console.WriteLine("Your checking account has been created. The account number is {0}",myCheckingAcct);
+        }
+        public int TheNewChecking()
+        {
+            return myCheckingAcct;
+        }
+        public void newCheckingProcess()
+        {
+            Console.WriteLine("Please state the amount you wish to deposit in your checking.");
+            plusMoney =Convert.ToDouble (Console.ReadLine());
+            checkingBalance();
+            printChBalance();
+        }
+        public void newSavings()
+        {
+            Bank.count++;
+            totalAccounts++;//total accounts for this customer
+            Bank.accountSavings = Bank.accountSavings++;
+            mySavingsAcct = Bank.accountSavings;
+            Console.WriteLine("Your savings account has been created. The account number is {0}",mySavingsAcct);
+        }
+        public int TheNewSavings()
+        {
+            return mySavingsAcct;
+        }
+        public void newSavingsProcess()
+        {
+            Console.WriteLine("Please state the amount you wish to deposit in your savings.");
+            plusMoney =Convert.ToDouble (Console.ReadLine());
+            savingsBalance();
+            printSaBalance();
+        }        
+    }
 
-    // }
 
-    // public interface IBalance
-    // {
-    //     double Balance();
-    // }
 
-    class Deposit: Bank //, IBalance
+    class Deposit: Bank 
     { // check to enter no negative amount
         public static double currentAmount;
         public static double plusMoney;
@@ -72,7 +100,7 @@ namespace HW2BigBankInc
         }
         public double Balance()
         {
-            this.balance =this.sabalance + this.chbalance; //for grand total
+            this.balance =newSave + this.chbalance; //for grand total
             return this.balance;
         }
         public void printBalance()
@@ -114,7 +142,7 @@ namespace HW2BigBankInc
         }
         public double Balance()
         {
-            this.balance =this.sabalance - this.chbalance; //for grand total
+            this.balance =newSave - this.chbalance; //for grand total
             return this.balance;
         }
         public void printBalance()
@@ -131,20 +159,8 @@ namespace HW2BigBankInc
             Console.WriteLine("The new balance of your checking is ${0}",this.chbalance);
         }
 
-        // public double Balance(double amount)
-        // {
-        //     // this.balance = balance;
-        //     this.balance-= amount;
-        // }
-        
     }
 
-
-
-//     class string NewAccount:AccountTypes
-//     {
-
-//     }
 
     class Program
     {
@@ -192,10 +208,10 @@ namespace HW2BigBankInc
         static void DepositSavings()
         {
             Console.WriteLine();
-            Deposit.currentAmount=43000;
+            Deposit.currentAmount=43000; //demo amount
             Console.WriteLine("Please state the amount you wish to deposit in your savings.");
             Deposit.plusMoney =Convert.ToDouble (Console.ReadLine());
-            while(Deposit.plusMoney<0)
+            while(Deposit.plusMoney<=0)
             {
                 Console.WriteLine();
                 Console.WriteLine("You requested to deposit the total amount of ${0}.",Deposit.plusMoney );
@@ -246,11 +262,11 @@ namespace HW2BigBankInc
 
         static void DepositChecking()
         {
-            Console.WriteLine();
-            Deposit.currentAmount=2550;
+            // Console.WriteLine();
+            // Deposit.currentAmount=2550;
             Console.WriteLine("Please state the amount you wish to deposit in your checking.");
             Deposit.plusMoney =Convert.ToDouble (Console.ReadLine());
-            while(Deposit.plusMoney<0)
+            while(Deposit.plusMoney<=0)
             {
                 Console.WriteLine();
                 Console.WriteLine("You requested to deposit the total amount of ${0}.",Deposit.plusMoney );
@@ -258,7 +274,7 @@ namespace HW2BigBankInc
                 Console.WriteLine("Please state the amount you wish to deposit in your checking.");
                 Deposit.plusMoney =Convert.ToDouble (Console.ReadLine());
             }
-            Console.WriteLine("The orginal savings amount was {0}",Deposit.currentAmount);
+            Console.WriteLine("The orginal checking amount was ${0}",Deposit.currentAmount);
             Console.WriteLine("You made a deposit in the amount of ${0}",Deposit.plusMoney);
             Deposit addChecking = new Deposit();
             addChecking.checkingBalance();
@@ -268,7 +284,7 @@ namespace HW2BigBankInc
         static void WithdrawChecking()
         {
             Console.WriteLine("You have choosen to withdraw funds from your checking account.");
-            Withdraw.currentAmount=2550;
+            Withdraw.currentAmount=2550;//demo amount
             Console.WriteLine("As of today your current balance is ${0}",Withdraw.currentAmount);
             Console.WriteLine("How much funds in your checking do you wish to withdrawal?");
             Withdraw.minusMoney =Convert.ToDouble (Console.ReadLine());
@@ -288,51 +304,60 @@ namespace HW2BigBankInc
             minusChecking.printChBalance();
         }
         
-        static void createChecking()
-        {
 
-        }
-        static void createSavings()
-        {
-
-        }
         static void Main(string[] args)
         {
-
-            // Console.WriteLine("Please state your name");
-            // string yourName= Console.ReadLine();
-            // Customer myCustomer = new Customer(yourName);
-
-            // Console.WriteLine(myCustomer.sayCustomer()); // demo how to print customer name
-            // myCustomer.greetClient(); // may use to greet clients
-            // Console.ReadLine();
 
             int choice;
             string choice2;
             string choice3;
+            string  YaName;
+            int ChkAcct;
+            int SavAcct;
+            string theCustomer;
+            int AccountNum;
 
             do
             {
                 ShowMenu();
                 choice = Convert.ToInt32(Console.ReadLine());
+                
 
                 switch (choice)
                 {
+                    
                     case 1: // Create a new account
                     {
                         AcctHeadingMenu();
                         Console.WriteLine("You have choosen to create an Account.");
                         AccountsMenu();
+
                         AcctFooterMenu();
                         choice2 = Console.ReadLine().ToLower();
                         if (choice2 == "a")
                         {
                             AcctHeadingMenu();
                             Console.WriteLine("You have choosen to create a Checking Account.");
-                            // write and put method for creating an account(checking) have customer
-                            // make a deposit, should not be zero balance, it should prompt user for amount
-                            //to deposit. Would like $50 starting point, only for opening a checking amount. 
-                            // any amount there after.
+                            Dictionary<int,string> NewCheckingAcct =new Dictionary<int,string>();
+                            Console.WriteLine("Please state your name.");
+
+                            YaName = Console.ReadLine();
+                            Customer ChkClient = new Customer(YaName);
+                            Console.WriteLine();
+                            ChkClient.greetClient(); 
+                            ChkClient.newChecking();
+                            
+                            Bank.count++; // increments the total bank accounts number each time it is created
+                            Bank.accountChecking++;// increments the account number each time it is created, not repeated
+                            Console.WriteLine("You are required to make a deposit.");
+                            Console.WriteLine();
+                            Deposit.currentAmount=0;
+                            ChkClient.newCheckingProcess();
+
+                            theCustomer =ChkClient.sayCustomer();
+                            AccountNum = ChkClient.TheNewChecking();
+                            NewCheckingAcct.Add(AccountNum,theCustomer);
+
                             AcctFooterMenu();
                             Console.WriteLine("Press the entry key to return to main menu.");
                             Console.ReadLine(); // can be commented out but purpose is to pause
@@ -344,8 +369,27 @@ namespace HW2BigBankInc
                         {
                             AcctHeadingMenu();
                             Console.WriteLine("You have choosen to create a Savings Account.");
-                            //write and input method for creating a savings account.
-                            // Minumum required $100 to start only
+                            Dictionary<int,string> NewSavingsAcct =new Dictionary<int,string>();
+                            Console.WriteLine("Please state your name.");
+
+                            YaName = Console.ReadLine();
+                            Customer SavClient = new Customer(YaName);
+                            Console.WriteLine();
+                            SavClient.greetClient(); 
+                            SavClient.newSavings();
+                            
+                            Bank.count++; // increments the total bank accounts number each time it is created
+                            Bank.accountSavings++;// increments the account number each time it is created, not repeated
+                            Console.WriteLine("You are required to make a deposit.");
+                            Console.WriteLine();
+                            Deposit.currentAmount=0;
+                            SavClient.newSavingsProcess();
+
+
+                            theCustomer =SavClient.sayCustomer();
+                            AccountNum = SavClient.TheNewSavings();
+                            NewSavingsAcct.Add(AccountNum,theCustomer);
+
                             AcctFooterMenu();
                             Console.WriteLine("Press the enter key to return to main menu.");
                             Console.ReadLine(); // can be commented out but purpose is to pause
@@ -371,6 +415,8 @@ namespace HW2BigBankInc
                         choice3 = Console.ReadLine().ToLower();
                         if (choice3 == "i") // choice to deposit in checking
                         {
+                            Console.WriteLine();
+                            Deposit.currentAmount=2550; //temporary for demo
                             DepositChecking();
                             AcctFooterMenu();
                             Console.WriteLine("Press the enter key to return to main menu.");
@@ -437,13 +483,31 @@ namespace HW2BigBankInc
                     {
                         AcctHeadingMenu();
                         Console.WriteLine("Which account you wish to close your account.");
+                        AcctTypeMenu();
                         choice3 = Console.ReadLine().ToLower();
                         if (choice3 == "i") // choice to close checking account
                         {
-            
-                            // call function/method/class to remove account
-                            Console.WriteLine("Testing. You have closed your checking account.");
-                            // state amount that is being withdrawn
+                            Dictionary<int,string> NewCheckingAcct =new Dictionary<int,string>();
+                            Console.WriteLine("Please state your name.");
+
+                            YaName = Console.ReadLine();
+                            Customer ChkClient = new Customer(YaName);
+                            Console.WriteLine();
+                            Console.WriteLine("{0}, you have choosen to close your checking account.", YaName);
+                            
+                            Console.WriteLine("Please type in your account number.");
+                            ChkAcct =Convert.ToInt32(Console.ReadLine()); // register account # customer typed in
+
+                            if (NewCheckingAcct.ContainsValue(YaName))
+                            {
+                                Console.WriteLine("Your account {0} has been founded and will be close.", ChkAcct); // True.
+                                NewCheckingAcct.Remove(ChkAcct);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Your account was not found, you will be redirected to the main menu.");
+                            }
+
                             AcctFooterMenu();
                             Console.WriteLine("Press the enter key to return to main menu.");
                             Console.ReadLine(); // can be commented out but purpose is to pause
@@ -452,8 +516,29 @@ namespace HW2BigBankInc
                         }
                         else if (choice3 == "ii") // choice to close savings account
                         {
-                            // call function/method/class to remove account
-                            Console.WriteLine("Testing. You have closed your Savings account.");
+
+                            Dictionary<int,string> NewSavingsAcct =new Dictionary<int,string>();
+                            Console.WriteLine("Please state your name.");
+
+                            YaName = Console.ReadLine();
+                            Customer SavClient= new Customer(YaName);
+                            Console.WriteLine();
+                            Console.WriteLine("{0}, you have choosen to close your savings account.", YaName);
+                            
+                            Console.WriteLine("Please type in your account number.");
+                            SavAcct=Convert.ToInt32(Console.ReadLine()); // register account # customer typed in
+
+                            if (NewSavingsAcct.ContainsValue(YaName))
+                            {
+                                Console.WriteLine("Your account {0} has been founded and will be close.", SavAcct); // True.
+                                NewSavingsAcct.Remove(SavAcct);
+                                Console.WriteLine("A cashier's check will be pprovided for your balance.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Your account was not found, you will be redirected to the main menu.");
+                            }
+
                             // state amount that is being withdrawn
                             AcctFooterMenu();
                             Console.WriteLine("Press the enter key to return to main menu.");

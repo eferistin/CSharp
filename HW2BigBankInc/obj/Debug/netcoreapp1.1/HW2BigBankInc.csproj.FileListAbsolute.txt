@@ -1,0 +1,8 @@
+C:\Users\Evelyn\Desktop\class-csharp\HW2BigBankInc\bin\Debug\netcoreapp1.1\HW2BigBankInc.deps.json
+C:\Users\Evelyn\Desktop\class-csharp\HW2BigBankInc\bin\Debug\netcoreapp1.1\HW2BigBankInc.runtimeconfig.json
+C:\Users\Evelyn\Desktop\class-csharp\HW2BigBankInc\bin\Debug\netcoreapp1.1\HW2BigBankInc.runtimeconfig.dev.json
+C:\Users\Evelyn\Desktop\class-csharp\HW2BigBankInc\obj\Debug\netcoreapp1.1\HW2BigBankInc.AssemblyInfo.cs
+C:\Users\Evelyn\Desktop\class-csharp\HW2BigBankInc\bin\Debug\netcoreapp1.1\HW2BigBankInc.dll
+C:\Users\Evelyn\Desktop\class-csharp\HW2BigBankInc\bin\Debug\netcoreapp1.1\HW2BigBankInc.pdb
+C:\Users\Evelyn\Desktop\class-csharp\HW2BigBankInc\obj\Debug\netcoreapp1.1\HW2BigBankInc.dll
+C:\Users\Evelyn\Desktop\class-csharp\HW2BigBankInc\obj\Debug\netcoreapp1.1\HW2BigBankInc.pdb
