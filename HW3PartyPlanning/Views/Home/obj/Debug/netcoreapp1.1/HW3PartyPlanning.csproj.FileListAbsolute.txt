@@ -1,0 +1,8 @@
+C:\Users\Evelyn\Desktop\class-csharp\HW3PartyPlanning\bin\Debug\netcoreapp1.1\HW3PartyPlanning.deps.json
+C:\Users\Evelyn\Desktop\class-csharp\HW3PartyPlanning\bin\Debug\netcoreapp1.1\HW3PartyPlanning.runtimeconfig.json
+C:\Users\Evelyn\Desktop\class-csharp\HW3PartyPlanning\bin\Debug\netcoreapp1.1\HW3PartyPlanning.runtimeconfig.dev.json
+C:\Users\Evelyn\Desktop\class-csharp\HW3PartyPlanning\bin\Debug\netcoreapp1.1\HW3PartyPlanning.dll
+C:\Users\Evelyn\Desktop\class-csharp\HW3PartyPlanning\bin\Debug\netcoreapp1.1\HW3PartyPlanning.pdb
+C:\Users\Evelyn\Desktop\class-csharp\HW3PartyPlanning\obj\Debug\netcoreapp1.1\HW3PartyPlanning.AssemblyInfo.cs
+C:\Users\Evelyn\Desktop\class-csharp\HW3PartyPlanning\obj\Debug\netcoreapp1.1\HW3PartyPlanning.dll
+C:\Users\Evelyn\Desktop\class-csharp\HW3PartyPlanning\obj\Debug\netcoreapp1.1\HW3PartyPlanning.pdb

@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "EventsTodo";
+}
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+
+<!--@model IEnumerable<EventList>-->
+@model IEnumerable<EventsTodo>
+
+@foreach(EventsTodo thelist in Model)
+{
+    <!--Console.WriteLine(thelist);-->
+    <div>
+        <span>@ thelist.categoryName</span>
+    </div>
+}
+
+<p>If you can image it, we can do it, the event of your choice.</p>
